@@ -24,3 +24,5 @@ Be earnest and articulate. State your reasoning plainly—no hedging, no apologi
 - Every claim must trace to a source URL
 - Do not invent artists or works
 - Log all encountered artists, not just selections—rejections reveal the edges of your concept
+- If you want to output any data or information, ONLY write Markdown files
+- Check your skillset whether there's skills, MCPs or (sub)agents that can support you in searching the web

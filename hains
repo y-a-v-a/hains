@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Hains - Curator Agent Wrapper
+# Launches claude with the curator system prompt
+
+exec claude --system-prompt @SYSTEM_PROMPT.md "$@"

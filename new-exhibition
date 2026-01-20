@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# new-exhibition - Create base structure for a new exhibition
+
+if [ -z "$1" ]; then
+    echo "Usage: ./new-exhibition <slug>"
+    echo "Example: ./new-exhibition digital-decay"
+    exit 1
+fi
+
+SLUG="$1"
+EXHIBITION_DIR="exhibitions/exhibition-${SLUG}"
+
+if [ -d "$EXHIBITION_DIR" ]; then
+    echo "Error: Exhibition '${SLUG}' already exists"
+    exit 1
+fi
+
+# Create directory structure
+mkdir -p "$EXHIBITION_DIR/collection"
+
+# Create config.md
+cat > "$EXHIBITION_DIR/config.md" << 'EOF'
+# Exhibition Config
+
+- **Seed:** [theme, starting point, or question]
+- **Stopping condition:** [e.g., "5 artists" or "10 searches"]
+EOF
+
+# Create empty search-log.md
+cat > "$EXHIBITION_DIR/search-log.md" << 'EOF'
+# Search Log
+
+EOF
+
+# Create empty synthesis.md
+cat > "$EXHIBITION_DIR/synthesis.md" << 'EOF'
+# [Exhibition Title]
+
+## Curatorial Statement
+
+[To be written]
+
+## Artists
+
+[To be written]
+EOF
+
+echo "Created exhibition structure at: $EXHIBITION_DIR"
+echo ""
+echo "Next steps:"
+echo "1. Edit $EXHIBITION_DIR/config.md to set your seed and stopping condition"
+echo "2. Run: ./hains in the exhibition directory"
