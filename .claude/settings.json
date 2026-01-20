@@ -1,0 +1,20 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "WebSearch|WebFetch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '\n⚠️  REMINDER: Did you update search-log.md with this search?\n   Required: Query, Source URL, Verdicts table, Next query\n'"
+          }
+        ]
+      }
+    ]
+  },
+    "permissions": {
+    "allow": [
+      "WebSearch"
+    ]
+  }
+}

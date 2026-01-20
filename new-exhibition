@@ -25,11 +25,55 @@ cat > "$EXHIBITION_DIR/config.md" << 'EOF'
 
 - **Seed:** [theme, starting point, or question]
 - **Stopping condition:** [e.g., "5 artists" or "10 searches"]
+
+## Workflow Reminders
+
+After EACH web search, you MUST append to `search-log.md`:
+
+1. **Query** - The search query you used
+2. **Source** - The URL you examined
+3. **Verdicts** - A table of ALL artists/artworks encountered:
+   ```markdown
+   | Artist/Work | Verdict | Reasoning |
+   |-------------|---------|-----------|
+   | Name | SELECTED/REJECTED | Why |
+   ```
+4. **Next Query** - What you'll search next and why
+
+When you SELECT an artist, immediately create `collection/artist-name.md` with:
+- Source URL
+- Context from source
+- Selected work
+- Reason for inclusion
+
+When you reach the stopping condition, write `synthesis.md` with:
+- Exhibition title
+- Curatorial statement (the throughline)
+- Final artist list with brief descriptions
 EOF
 
-# Create empty search-log.md
+# Create search-log.md with template
 cat > "$EXHIBITION_DIR/search-log.md" << 'EOF'
 # Search Log
+
+---
+
+## Search 1
+
+**Query:** [your search query]
+
+**Source:** [URL examined]
+
+**Verdicts:**
+
+| Artist/Work | Verdict | Reasoning |
+|-------------|---------|-----------|
+| Example Artist | SELECTED | [why this fits the exhibition concept] |
+| Another Artist | REJECTED | [why this doesn't fit] |
+
+**Next Query:** [what you'll search next and why]
+
+---
 
 EOF
 
@@ -46,8 +90,23 @@ cat > "$EXHIBITION_DIR/synthesis.md" << 'EOF'
 [To be written]
 EOF
 
+# Create sample artist file template
+cat > "$EXHIBITION_DIR/collection/_example-artist.md" << 'EOF'
+# Artist Name
+
+**Source:** [URL where you found this artist]
+
+**Context:** [Quote or description from the source explaining their work/practice]
+
+**Selected Work:** [Specific artwork or body of work you're including]
+
+**Reason for Inclusion:** [How this artist fits the exhibition's curatorial concept]
+EOF
+
 echo "Created exhibition structure at: $EXHIBITION_DIR"
 echo ""
 echo "Next steps:"
 echo "1. Edit $EXHIBITION_DIR/config.md to set your seed and stopping condition"
-echo "2. Run: ./hains in the exhibition directory"
+echo "2. Run: cd $EXHIBITION_DIR && ../hains"
+echo ""
+echo "Note: The hook system will remind you to update search-log.md after each search."

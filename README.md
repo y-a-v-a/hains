@@ -38,10 +38,22 @@ Relates to: Broodthaers' Musée d'Art Moderne, Département des Aigles; Siegelau
 
 ## Usage
 
-1. Create a project folder with `config.md`
-2. Run the agent with Claude Code
-3. Review `search-log.md` for the reasoning trail
-4. Find the exhibition in `synthesis.md`
+1. Create a new exhibition: `./new-exhibition <slug>`
+2. Edit the generated `config.md` to set your seed and stopping condition
+3. Run the curator: `cd exhibitions/exhibition-<slug> && ../../hains`
+4. The hook system will remind the agent to update `search-log.md` after each search
+5. Review `search-log.md` for the reasoning trail
+6. Find the final exhibition in `synthesis.md`
+
+## Hook System
+
+The project includes a tool-use hook (`.claude/hooks.json`) that triggers after web searches. It reminds the agent to update `search-log.md` with:
+- Query used
+- Source URL examined
+- Verdicts table (all artists encountered: SELECTED/REJECTED with reasoning)
+- Next intended query
+
+This ensures the decision-making process stays visible and complete.
 
 ## Note
 
