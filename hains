@@ -3,4 +3,6 @@
 # Hains - Curator Agent Wrapper
 # Launches claude with the curator system prompt
 
-exec claude --system-prompt @SYSTEM_PROMPT.md "$@"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SYSTEM_PROMPT=$(cat "$SCRIPT_DIR/SYSTEM_PROMPT.md")
+exec claude --system-prompt "$SYSTEM_PROMPT" "$@"
